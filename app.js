@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 });
 
 // Endpoint Here
-app.use('/api/user', authRoute1);
+app.use('/api/auth', authRoute1);
 app.use('/api/user', userRoute1);
 app.use('/api/departments', deptRoute1);
 app.use('/api/courses', coursesRoute1);
