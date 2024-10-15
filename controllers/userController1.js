@@ -35,7 +35,7 @@ const createUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const [result] = await pool.query('INSERT INTO users (fullname, username, password) VALUES (?, ?, ?)', [fullname, username, hashedPassword]);
-        res.status(201).json({ user_id: result.insertId, fullname, username, passwordx});
+        res.status(201).json({ user_id: result.insertId, fullname, username, password});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -46,7 +46,7 @@ const updateUser = async (req, res) => {
     const { fullname, username, password } = req.body;
 
     try {
-        const hashedPassword = await bcrypt.hash(passwordx, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const [result] = await pool.query('UPDATE users SET fullname = ?, username = ?, password = ? WHERE user_id = ?', [fullname, username,hashedPassword, user_id]);
 
         if (result.affectedRows === 0) {
