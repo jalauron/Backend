@@ -1,5 +1,6 @@
 const express = require('express'); 
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 //Routes Here
 const authRoute1 = require('./routes/authRoute1');
@@ -9,8 +10,8 @@ const coursesRoute1 = require('./routes/coursesRoute1');
 const studentsRoute1 = require('./routes/studentsRoute1');
 
 const app = express();
+
 app.use(bodyParser.json());
-const cors = require('cors');
 app.use(cors());
 
 app.get('/', function(req, res){ 
