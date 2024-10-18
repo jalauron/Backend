@@ -25,7 +25,7 @@ app.use('/api/departments', deptRoute1);
 app.use('/api/courses', coursesRoute1);
 app.use('/api/students', studentsRoute1);
 
-const PORT = process.env.PORT;
+const PORT = 5000;
 
 app.listen(PORT, () => {
     console.log('Server is running on port 5000');
