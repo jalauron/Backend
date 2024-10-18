@@ -11,7 +11,7 @@ const studentsRoute1 = require('./routes/studentsRoute1');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 app.use(cors());
 
 app.get('/', function(req, res){ 
@@ -25,7 +25,7 @@ app.use('/api/departments', deptRoute1);
 app.use('/api/courses', coursesRoute1);
 app.use('/api/students', studentsRoute1);
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log('Server is running on port 5000');
