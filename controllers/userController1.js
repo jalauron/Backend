@@ -30,11 +30,12 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+    const { user_id} = req.params;
     const { fullname, username, password } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const [result] = await pool.query('INSERT INTO users (fullname, username, password) VALUES (?, ?, ?)', [fullname, username, hashedPassword]);
+        const [result] = await pool.query('INSERT INTO users (fullname, username, password) VALUES (?, ?, ?)', [fullname, username, hashedPassword, user_id]);
         res.status(201).json({ user_id: result.insertId, fullname, username, password});
     } catch (err) {
         res.status(500).json({ error: err.message });
