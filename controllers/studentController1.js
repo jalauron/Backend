@@ -19,8 +19,12 @@ const getStudentById = async (req, res) => {
 };
 
 const createStudent = async (req, res) => {
-    const { student_id } = req.params;
     const { lname, fname, mi, age, gender, user_id, course_id } = req.body;
+
+    // Validate required fields
+    if (!lname || !fname || !age || !gender || !user_id || !course_id) {
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
 
     try {
         const [result] = await pool.query('INSERT INTO students (lname, fname, mi, age, gender, user_id, course_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [lname, fname, mi, age, gender, user_id, course_id]);
@@ -29,6 +33,7 @@ const createStudent = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
 
 const updateStudent = async (req, res) => {
     const { student_id } = req.params;
