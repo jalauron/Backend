@@ -6,7 +6,7 @@ const getStudentById = async (req, res) => {
     const { student_id } = req.params;
 
     try {
-        const [rows] = await pool.query('SELECT lname, fname, mi, user_id, course_id, created_at, updated_at FROM departments WHERE dept_id = ?', [student_id]);
+        const [rows] = await pool.query('SELECT lname, fname, mi, age, user_id, course_id, created_at, updated_at FROM departments WHERE dept_id = ?', [student_id]);
 
         if (rows.length === 0) {
             return res.status(404).json({ error: 'Student not found' });
