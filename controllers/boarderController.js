@@ -2,17 +2,12 @@ const pool = require('../config/database');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-/**
- * Register a new boarder
- * @param {Object} req - HTTP request object
- * @param {Object} res - HTTP response object
- */
 const registerBoarder = async (req, res) => {
     const { username, password } = req.body;
 
     try {
         // Hash the password before storing it
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 50);
 
         // Insert boarder credentials into the database
         const [rows] = await pool.query(
@@ -31,11 +26,6 @@ const registerBoarder = async (req, res) => {
     }
 };
 
-/**
- * Login a boarder
- * @param {Object} req - HTTP request object
- * @param {Object} res - HTTP response object
- */
 const loginBoarder = async (req, res) => {
     const { username, password } = req.body;
 
