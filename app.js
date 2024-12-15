@@ -15,6 +15,8 @@ const app = express();
 app.use(bodyParser.json()); 
 app.use(cors());
 
+app.use(express.json());
+
 app.get('/', function(req, res){ 
     res.send("JAYME LAURON");
 });
