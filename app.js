@@ -8,6 +8,7 @@ const userRoute1 = require('./routes/userRoute1');
 const deptRoute1 = require('./routes/deptRoute1');
 const coursesRoute1 = require('./routes/coursesRoute1');
 const studentsRoute1 = require('./routes/studentsRoute1');
+const boardersRoute = require('./routes/boardersRoute');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/user', userRoute1);
 app.use('/api/departments', deptRoute1);
 app.use('/api/courses', coursesRoute1);
 app.use('/api/students', studentsRoute1);
+app.use('/api/boarders', boardersRoute);
 
 const PORT = 5000;
 
