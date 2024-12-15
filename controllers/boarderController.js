@@ -7,7 +7,7 @@ const registerBoarder = async (req, res) => {
 
     try {
         // Hash the password before storing it
-        const hashedPassword = await bcrypt.hash(password, 50);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         // Insert boarder credentials into the database
         const [rows] = await pool.query(
