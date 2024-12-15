@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerBoarder, loginBoarder } = require('../controllers/boarderController');
+const { registerBoarder, loginBoarder } = require('../controllers/boardersController');
 
 const router = express.Router();
 
